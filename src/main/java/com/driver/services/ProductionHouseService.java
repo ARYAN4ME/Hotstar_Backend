@@ -14,11 +14,10 @@ public class ProductionHouseService {
     ProductionHouseRepository productionHouseRepository;
 
     public Integer addProductionHouseToDb(ProductionHouseEntryDto productionHouseEntryDto){
-        ProductionHouse productionHouse = new ProductionHouse();
-        productionHouse.setName(productionHouseEntryDto.getName());
+        ProductionHouse productionHouse = new ProductionHouse(productionHouseEntryDto.getName());
         productionHouse.setRatings(0.0);
-        productionHouseRepository.save(productionHouse);
-        return productionHouse.getId();
+        ProductionHouse newProductHouse =  productionHouseRepository.save(productionHouse);
+        return newProductHouse.getId();
     }
 
 
